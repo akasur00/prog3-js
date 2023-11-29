@@ -20,6 +20,7 @@ function overflow(){
 
     console.log("Over/Underflow errors:",
         "\nMax Value of numbers in js:\t\t\t", Number.MAX_VALUE,
+        //"\n\t\tas BigInt:\t\t\t\t", BigInt(Number.MAX_VALUE),
         "\ncompare to Max Value of Long in c:\t\t", 0x7fffffffffffffff,
         "\ntrying overflow computation: MAX_VALUE + 100:\t", Number.MAX_VALUE + 100,
         "\nanother overflow comp: MAX_VALUE * 2:\t\t", Number.MAX_VALUE * 2,
