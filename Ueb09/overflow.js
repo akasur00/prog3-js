@@ -14,7 +14,7 @@ function overflow(){
     result = K / 10.0 - sum;
 
     console.log("cumulative errors by multiple summations: (should be 0)\t"
-        , result, "\t\trounded: ", Math.round(result), "\ncompare to result in c:\t\t\t\t\t", res_c, "\ndifference:\t\t\t\t\t\t", result - res_c);
+        , result.toFixed(10), "\t\trounded: ", Math.round(result), "\ncompare to result in c:\t\t\t\t\t", res_c, "\ndifference:\t\t\t\t\t\t", result - res_c);
 
     console.log();
 

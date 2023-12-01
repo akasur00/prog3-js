@@ -7,14 +7,14 @@ function exponentiation(){
 
     //loop with decrementing base
     for (let i = 0; i < 101; i++) {
-        console.log(`base: ${base}\texponent: ${exponent}\n`, base ** exponent);
+        console.log(`base: ${base.toFixed(2)}\texponent: ${exponent.toFixed(2)}\n`, (base ** exponent).toFixed(2));
         base -= decrement_base;
         exponent -= decrement_exponent;
     }
 
     console.log()
 
-    console.log("Exponentiation results:",
+    console.log("other Exponentiation results:",
     "\n0^1:\t", 0 ** 1,
     "\n1^0:\t", 1 ** 0,
     "\n0^0:\t", 0 ** 0);
