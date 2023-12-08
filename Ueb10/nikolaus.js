@@ -1,5 +1,5 @@
 function nikolaus(){
-    const point_map = {
+    const point_map = {     //All points with their neighbours
         'A': ['B', 'D', 'E'],
         'B': ['C', 'D', 'A', 'E'],
         'C': ['B', 'D'],
@@ -7,7 +7,7 @@ function nikolaus(){
         'E': ['A', 'B', 'D'],
     }
 
-    const edge_map = {
+    const edge_map = {  //All edges and their points connecting
         '1': ['A', 'B'],
         '2': ['B', 'C'],
         '3': ['C', 'D'],
@@ -33,32 +33,35 @@ function nikolaus(){
 
     //chooses A as start
     let current_point = Object.keys(point_map)[0];
-    let test_edge
     let point;
     let next_point;
     const path = [];
 
-    while (!(Object.keys(edge_map).length === path.length)) {
-        for (let i = 0; i < point_map[current_point].length; i++) {
-            point = point_map[current_point][i];
-            const current_edge = edgefinder(current_point, point, edge_map)
+    while (!(Object.keys(edge_map).length === path.length)) {   //stop when all edges have been visited
+        for (let i = 0; i < point_map[current_point].length; i++) { //iterate through the neigbours in point
+            point = point_map[current_point][i];        //get neighbouring point out of the point_map
+            const current_edge = determine_edge(current_point, point, edge_map)     //look if edge is in edge_map
             if (!(path.includes(current_edge))) {
-                path.push(current_edge);
-                next_point = point;
+                path.push(current_edge);                //if edge is not included in the path-array: push
+                next_point = point;                     //go on with the next point
                 break;
             }
         }
-        current_point = next_point;
+        current_point = next_point;                     //stay on the same point and iterate further
     }
 
-    console.log(path.join(' -> '));
+    let str = "";
+    for (let i = 0; i < Object.keys(edge_map).length; i++) {
+        str += (edge_map[path[i]].join(' -> ')) + ":";      //show all Edges as the way from point x to y
+    }
+    console.log(str);           //output string
 }
 
-function edgefinder(current_point, point, edge_map){
+function determine_edge(current_point, point, edge_map){
     for (const edgeMapKey in edge_map) {
         if ((edge_map[edgeMapKey][0] === current_point && edge_map[edgeMapKey][1] === point ||
             edge_map[edgeMapKey][1] === current_point && edge_map[edgeMapKey][0] === point)) {
-            return edgeMapKey
+            return edgeMapKey;
         }
     }
 }
